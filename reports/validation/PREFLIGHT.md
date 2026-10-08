@@ -12,4 +12,4 @@ remained frozen, and no CUDA OOM occurred. Peak allocated tensor memory was
 Evidence: `smoke_cpu_fake.json`, `smoke_cuda_cifar100.json`.
 Source fingerprint: b8c6fa0e7d8b14068f72b3538fc4712865375efa1fca1bc8eecba956c5ccf3ff.
 Teacher strict state-dict load and dataset official MD5 checks passed.
-Gate 0 is passed. Gate 1 still requires full Teacher test-set evaluation.
+Gate 0 and Gate 1 are passed. EXP_000 evaluated all 10,000 test images: top-1 79.42%, top-5 94.58%, exactly matching the expected top-1 reference.

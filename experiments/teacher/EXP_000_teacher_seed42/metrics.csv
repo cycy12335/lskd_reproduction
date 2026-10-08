@@ -1,0 +1,2 @@
+test_loss,test_accuracy,test_top5_accuracy,test_samples
+0.8833263866424561,79.42,94.58,10000
