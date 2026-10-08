@@ -1,8 +1,32 @@
 # 项目交接文件
 
+## 当前研究目标：方法论实验复现（2026-10-08 用户澄清）
+
+以受控实验检验 logit 标准化的作用，不以精确复现论文表格数值或历史环境为验收条件。本节优先于下文历史计划中的相关要求。
+
+- 核心比较：同一 Teacher/Student、数据、训练预算和随机种子，KD 与 LS-KD 固定 T=2、CE 权重 0.1、KD 权重 9，仅切换标准化。
+- Baseline 衡量蒸馏整体收益；KD 与 LS-KD 的配对差值衡量该参数设置下的标准化收益。不能据单一设置推断所有温度和权重下均有效。
+- 先完成 seed 42 的顺序实验，再按原计划进行多种子与温度消融、logits 分析。报告最佳与最终准确率、配对差值、均值和标准差，避免只挑有利结果。
+- Baseline < KD < LS-KD 是待检验假设，不是强制结果。反向或无提升结果须保存、排查并如实报告；不以追求预期顺序为由反复调参或丢弃实验。
+- 论文数值仅作背景参考；历史 KD 73.33% 的精确参数溯源不再阻塞本项目，也不自动增加历史协议复现实验。
+- INC_002 按用户明确的研究范围关闭；关闭不代表已查明历史参数。原始数据保全、源码指纹、Teacher 验证、本地 GPU 和各阶段检查仍须遵守。
+
+
 建立日期：2026-10-08（Asia/Shanghai）。项目根目录：`D:\reproduction`。
 
 本文是交接时的状态快照。实验继续运行后会变化，接手时必须重新读取实时元数据、指标、日志并核对进程。
+
+## 接手核查更新：2026-10-08 晚间
+
+本节优先于下文历史快照；后续接手仍需核查实时状态。
+
+- EXP_001 于今天 17:49:09（UTC+8）完成 240/240 epochs，最佳 Top-1 72.53%（epoch 239），最终 72.23%（epoch 240）。这是单次最终结果，不代表全项目完成。
+- 20:17 原训练及启动 PID 均已退出，无 Python 训练进程，锁不存在，GPU 空闲；last_launch.json 是历史启动记录。
+- 240 行指标和日志完整、数值有限、学习率时点正确；checkpoint 严格加载和 SHA256 验证通过；错误日志为空。Gate 2 通过。
+- 中文报告：reports/analysis/01_baseline_analysis.md。中文摘要：experiments/baseline/EXP_001_baseline_seed42/summary.md。机器核查及原始记录哈希：reports/validation/EXP_001_completion_audit_20261008.json。
+- INC_002（INVESTIGATING）：论文 KD 73.33% 的历史协议待溯源。本地 T=2/CE=0.1/KD=9 与 mdistiller 现行 T=4/CE=0.1/KD=0.9 不同，不能混作直接对照。见 reports/incidents/INC_002_kd_protocol_provenance.md。EXP_002、EXP_003 未启动，协议解决后再进入 Gate 3。
+- 训练源码和环境未改变，源码指纹仍匹配 Teacher EXP_000 和 smoke test；Teacher Gate 固定 EXP_000 的限制保留。
+- 接手前未提交修改已保留。registry.csv 已正确登记 completed/72.53，无需重写。原始元数据、指标、日志和 checkpoint 均未改动，未执行 reset/clean 或提交 checkpoint。
 
 ## 一、目标与用户约束
 
