@@ -1,0 +1,25 @@
+{
+  "dataset": "CIFAR-100",
+  "original_url": "https://www.cs.toronto.edu/~kriz/cifar-100-python.tar.gz",
+  "retrieval_url": "https://huggingface.co/datasets/xingslong/cifar-100-python/resolve/main/cifar-100-python.tar.gz",
+  "archive_bytes": 169001437,
+  "official_md5": "eb9058c3a382ffc7106e4002c42a8d85",
+  "archive_md5_verified": true,
+  "archive_sha256": "85cd44d02ba6437773c5bbd22e183051d648de2e7d6b014e1ef29b855ba677a7",
+  "train_samples": 50000,
+  "test_samples": 10000,
+  "files": [
+    {
+      "filename": "train",
+      "official_md5": "16019d7e3df5f24257cddd939b257f8d",
+      "md5_verified": true,
+      "sha256": "735e79b04f092ca3d2e6d07f368c0a7d70d48c48d28865950cc24454cf45129b"
+    },
+    {
+      "filename": "test",
+      "official_md5": "f0ef6b0ae62326f3e7ffdfab6717acfc",
+      "md5_verified": true,
+      "sha256": "4b67687d9933c4db8f0831104447f15b93774f4f464bd0516f0f0f2ac83b7864"
+    }
+  ]
+}

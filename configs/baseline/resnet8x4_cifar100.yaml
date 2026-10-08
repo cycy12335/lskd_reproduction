@@ -1,0 +1,16 @@
+experiment_id: EXP_001
+method: baseline
+dataset: CIFAR100
+teacher: null
+student: resnet8x4
+seed: 42
+minimum_expected_accuracy: 70.5
+training:
+  epochs: 240
+  batch_size: 64
+  num_workers: 2
+  learning_rate: 0.05
+  weight_decay: 0.0005
+  momentum: 0.9
+  lr_decay_stages: [150, 180, 210]
+  lr_decay_rate: 0.1

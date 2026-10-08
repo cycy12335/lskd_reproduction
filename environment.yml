@@ -1,0 +1,9 @@
+name: lskd
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10.20
+  - pip
+  - pip:
+      - -r requirements-gpu.txt
+      - -r requirements.txt

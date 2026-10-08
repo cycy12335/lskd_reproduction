@@ -1,0 +1,47 @@
+{
+  "status": "passed",
+  "checked_at": "2026-10-08T06:59:42.603552+00:00",
+  "source_fingerprint": "b8c6fa0e7d8b14068f72b3538fc4712865375efa1fca1bc8eecba956c5ccf3ff",
+  "device": "cuda",
+  "dataset": "cifar100",
+  "batch_size": 64,
+  "results": {
+    "baseline": {
+      "train_loss": 4.706946849822998,
+      "train_accuracy": 0.0,
+      "train_ce": 4.706946849822998,
+      "train_kd": 0.0,
+      "train_samples": 128,
+      "test_loss": 4.614892482757568,
+      "test_accuracy": 0.78125,
+      "test_top5_accuracy": 1.5625,
+      "test_samples": 128,
+      "seconds": 1.6224254000699148
+    },
+    "kd": {
+      "train_loss": 128.2415428161621,
+      "train_accuracy": 0.78125,
+      "train_ce": 4.76455020904541,
+      "train_kd": 14.196121215820312,
+      "train_samples": 128,
+      "test_loss": 7.3660829067230225,
+      "test_accuracy": 1.5625,
+      "test_top5_accuracy": 5.46875,
+      "test_samples": 128,
+      "seconds": 1.19004589994438
+    },
+    "lskd": {
+      "train_loss": 21.79482936859131,
+      "train_accuracy": 0.0,
+      "train_ce": 4.724717378616333,
+      "train_kd": 2.3691508769989014,
+      "train_samples": 128,
+      "test_loss": 4.68773341178894,
+      "test_accuracy": 1.5625,
+      "test_top5_accuracy": 4.6875,
+      "test_samples": 128,
+      "seconds": 1.139573200023733
+    }
+  },
+  "peak_gpu_memory_bytes": 374268928
+}

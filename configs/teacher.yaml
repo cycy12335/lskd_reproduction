@@ -1,0 +1,10 @@
+experiment_id: EXP_000
+method: teacher
+dataset: CIFAR100
+teacher: resnet32x4
+student: null
+seed: 42
+expected_accuracy: 79.42
+tolerance_pp: 0.5
+training:
+  batch_size: 64

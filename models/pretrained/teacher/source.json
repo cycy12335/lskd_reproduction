@@ -1,0 +1,12 @@
+{
+  "source": "https://github.com/megvii-research/mdistiller/releases/download/checkpoints/cifar_teachers.tar",
+  "downloaded_at_utc": "2026-10-08T06:21:51.824007+00:00",
+  "model": "resnet32x4",
+  "expected_accuracy_percent": 79.42,
+  "expected_accuracy_source": "https://openaccess.thecvf.com/content/CVPR2024/papers/Sun_Logit_Standardization_in_Knowledge_Distillation_CVPR_2024_paper.pdf",
+  "archive_member": "cifar_teachers/resnet32x4_vanilla/ckpt_epoch_240.pth",
+  "local_filename": "teacher_resnet32x4_cifar100.pth",
+  "sha256": "22aa12e2b632b19ddde155ccf2388671842ddd304824b3095e0a7fff364beb4f",
+  "archive_sha256": "e7c8b2f7d449af08e1222663e845ad23ca4a2044735b980740d86a96088de52c",
+  "checksum_note": "Computed locally for provenance; not an independently published digest."
+}

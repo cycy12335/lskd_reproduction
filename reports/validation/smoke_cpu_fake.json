@@ -1,0 +1,47 @@
+{
+  "status": "passed",
+  "checked_at": "2026-10-08T06:48:17.448512+00:00",
+  "source_fingerprint": "b8c6fa0e7d8b14068f72b3538fc4712865375efa1fca1bc8eecba956c5ccf3ff",
+  "device": "cpu",
+  "dataset": "fake",
+  "batch_size": 4,
+  "results": {
+    "baseline": {
+      "train_loss": 4.726361989974976,
+      "train_accuracy": 0.0,
+      "train_ce": 4.726361989974976,
+      "train_kd": 0.0,
+      "train_samples": 8,
+      "test_loss": 4.300945997238159,
+      "test_accuracy": 12.5,
+      "test_top5_accuracy": 62.5,
+      "test_samples": 8,
+      "seconds": 1.036495800013654
+    },
+    "kd": {
+      "train_loss": 162.59608840942383,
+      "train_accuracy": 0.0,
+      "train_ce": 23.80982542037964,
+      "train_kd": 17.80167865753174,
+      "train_samples": 8,
+      "test_loss": 15.93887996673584,
+      "test_accuracy": 0.0,
+      "test_top5_accuracy": 0.0,
+      "test_samples": 8,
+      "seconds": 0.7389020000118762
+    },
+    "lskd": {
+      "train_loss": 5.245431661605835,
+      "train_accuracy": 0.0,
+      "train_ce": 5.042524337768555,
+      "train_kd": 0.5267976745963097,
+      "train_samples": 8,
+      "test_loss": 4.6413254737854,
+      "test_accuracy": 0.0,
+      "test_top5_accuracy": 12.5,
+      "test_samples": 8,
+      "seconds": 0.6235023000044748
+    }
+  },
+  "peak_gpu_memory_bytes": null
+}
