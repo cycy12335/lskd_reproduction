@@ -1,5 +1,24 @@
 # 项目交接文件
 
+## 最新指令：继续训练（2026-10-09）
+
+用户授权优先续训，无法恢复才从头重训并覆盖。检查确认 EXP_002 的 epoch 120 checkpoint 具备恢复条件，已新增并测试 operations/resume_kd.py，准备从 epoch 121 继续至 240；无需从头重训。
+
+续训入口复用原核心训练代码及 Gate，核心指纹未改；入口自身通过单独的 SHA256 和 Git 提交追踪，不能把核心指纹当作新增入口的验证。14 项测试通过，包括 CUDA 连续执行/中断恢复完全一致的代表性测试。检查说明：reports/validation/EXP_002_resume_validation_20261009.md。
+
+原实验目录、registry 和 best/latest checkpoint 在续训启动时先归档；metrics 保留前 120 行并追加，旧日志中的未完成 epoch 121 尝试保留并以 resume_from_epoch 标记区分。原训练提交保留，续训入口版本记录于 metadata.resume_sessions。真实启动结果以实时 metadata、锁、日志及 last_launch.json 为准。
+
+下文“暂停”“无断点续训入口”均为此前状态，已由本条授权及新增入口取代。KD 完成前不启动 LS-KD。
+
+
+
+## 最新指令：暂停训练（2026-10-08 22:32，UTC+8）
+
+用户明确要求暂停训练。EXP_002 训练进程树已停止，状态 interrupted；已完成 120/240 epochs，阶段最佳 58.4%（epoch 117），最后完成 epoch 的 Top-1 为 53.02%。指标与 checkpoint 已保留并验证可读取。详见 reports/progress/EXP_002_user_stop_20261008_223208/暂停说明.md。
+
+不要自动重启训练或推进 LS-KD。项目无断点续训入口，后续须先按用户指示决定如何继续。下文 running 状态均为历史记录。本次是用户主动中断，不是算法或训练故障。
+
+
 ## 当前研究目标：方法论实验复现（2026-10-08 用户澄清）
 
 以受控实验检验 logit 标准化的作用，不以精确复现论文表格数值或历史环境为验收条件。本节优先于下文历史计划中的相关要求。
@@ -16,7 +35,20 @@
 
 本文是交接时的状态快照。实验继续运行后会变化，接手时必须重新读取实时元数据、指标、日志并核对进程。
 
-## 接手核查更新：2026-10-08 晚间
+## 最新运行状态：2026-10-08 20:39（UTC+8）
+
+用户明确采用方法论实验复现，INC_002 已关闭，历史参数溯源不再阻塞；原始发现记录保留。EXP_001 已完成且 Gate 2 通过。
+
+EXP_002 KD 已于 20:39:33 启动；训练 PID 21832，启动包装 PID 39760，状态 running。配置 seed 42、batch 64、240 epochs，T=2、CE=0.1、KD=9、standardized=false。训练提交 94d6d072bc81cd26542912cab8abcaccd8c78a29；源码指纹与 EXP_000/EXP_001 相同，仅文档提交变化。
+
+实时文件：experiments/kd/EXP_002_kd_seed42/metadata.json、metrics.csv、train.log、error.log；.tools/active_experiment.lock；.tools/last_launch.json。启动日志：logs/system/kd_20261008_203933.stdout.log 和 .stderr.log。旧 Baseline 的 last_launch 快照已按启动器设计更新为 KD，Baseline 原始实验记录未覆盖。
+
+EXP_003 尚未启动，必须等 KD 完成、检查完整指标/checkpoint/异常后再推进。不得重复启动 EXP_002 或删除活跃锁。运行中的 Python 报告模板仍是英文，完成后翻译报告，不为语言调整修改训练源码。
+
+启动前发现中文未跟踪报告路径被 Git 转义后误触发 check_code_clean；关闭本仓库 core.quotepath 后，Python 默认 GBK 又无法解码 UTF-8 路径。现通过 git config --local core.quotepath false 和启动进程继承 PYTHONUTF8=1 解决。两次检查均发生在训练启动之前，未占用 EXP ID；仅最后一次启动了正式训练。未来启动保持 UTF-8 模式；该问题未改变训练逻辑或源码指纹。
+
+下文“INC_002 待解决”“EXP_002 未启动”等均为历史快照，以本节和实时状态为准。
+## 接手核查更新：2026-10-08 晚间（历史）
 
 本节优先于下文历史快照；后续接手仍需核查实时状态。
 
