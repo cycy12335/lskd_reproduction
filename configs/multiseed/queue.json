@@ -1,0 +1,38 @@
+[
+  {
+    "experiment_id": "EXP_004",
+    "method": "baseline",
+    "seed": 3407,
+    "config": "configs/multiseed/EXP_004_baseline_seed3407.yaml"
+  },
+  {
+    "experiment_id": "EXP_006",
+    "method": "kd",
+    "seed": 3407,
+    "config": "configs/multiseed/EXP_006_kd_seed3407.yaml"
+  },
+  {
+    "experiment_id": "EXP_008",
+    "method": "lskd",
+    "seed": 3407,
+    "config": "configs/multiseed/EXP_008_lskd_seed3407.yaml"
+  },
+  {
+    "experiment_id": "EXP_005",
+    "method": "baseline",
+    "seed": 2024,
+    "config": "configs/multiseed/EXP_005_baseline_seed2024.yaml"
+  },
+  {
+    "experiment_id": "EXP_007",
+    "method": "kd",
+    "seed": 2024,
+    "config": "configs/multiseed/EXP_007_kd_seed2024.yaml"
+  },
+  {
+    "experiment_id": "EXP_009",
+    "method": "lskd",
+    "seed": 2024,
+    "config": "configs/multiseed/EXP_009_lskd_seed2024.yaml"
+  }
+]

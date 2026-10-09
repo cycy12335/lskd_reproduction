@@ -1,5 +1,37 @@
 # 项目交接文件
 
+## 最新授权：多种子实验（2026-10-09）
+
+用户要求开始多种子实验。串行顺序：EXP_004 Baseline seed3407 → EXP_006 KD seed3407 → EXP_008 LS-KD seed3407 → EXP_005 Baseline seed2024 → EXP_007 KD seed2024 → EXP_009 LS-KD seed2024。保持原配置，仅改变 seed/ID，不重跑 seed42。
+
+独立后台控制器 operations/multiseed_queue.py 在每项完成并通过完整性检查后推进，失败或 warning 停止。控制器及计划单独记录哈希，不改变原核心指纹与 Teacher Gate。实时状态以 reports/progress/multiseed_20261009/state.json、registry、实验 metadata、实际进程为准。完整计划及停止方式：reports/progress/multiseed_20261009/计划.md。
+
+若用户要求暂停，须停止控制器及训练子进程树，避免下一任务自动启动。下文“多种子尚未开始”是历史记录。控制器只执行这六项，不自动追加实验。
+
+
+
+## 最新核查：LS-KD 完成，seed 42 核心对照结束（2026-10-09）
+
+EXP_003 于 15:25:07（UTC+8）完成 240 epochs。最佳 Top-1 76.51%（epoch 190），最终 75.96%；比 KD 分别高 3.17、3.32 个百分点。Baseline/KD/LS-KD 最佳依次为 72.53%、73.34%、76.51%，最终依次为 72.23%、72.64%、75.96%。
+
+完整指标、checkpoint、哈希与全测试集推理验证通过，Gate 4 通过。无活跃训练进程或锁；本次未启动多种子训练。旧运行状态均为历史记录。
+
+重要分析结果：LS-KD 原始 logits 标准差小、置信度低，best 模型平均最高预测概率 2.64%，测试 CE 3.91006。准确率提高并不意味着概率质量全面提高；此现象已通过全测试集推理确认，应保留在后续方法论报告中。
+
+中文阶段报告：reports/analysis/03_lskd_analysis.md；对照表：results/tables/main_results.csv；核查与推理记录：reports/validation/EXP_003_completion_audit_20261009.json、seed42_checkpoint_reevaluation_20261009.json。
+
+下一阶段为 seed 3407/2024 的多种子对照、温度消融及 logits 分析。单次结果支持当前设置下的分类准确率收益，尚不能宣称跨种子稳定性或统计显著。
+
+
+## LS-KD 已启动：2026-10-09 10:17（UTC+8）
+
+EXP_003 LS-KD 已于 10:17:08 启动，训练 PID 23292、启动包装 PID 36392。seed 42、batch 64、240 epochs，T=2、CE=0.1、KD=9、standardized=true。与 KD 的配置仅方法标识、EXP ID 及标准化开关不同，核心源码指纹一致。提交：38fcf3f1806142ae203445fb359b846377c6f7c6。
+
+实时记录：experiments/lskd/EXP_003_lskd_seed42/；锁：.tools/active_experiment.lock；启动记录：.tools/last_launch.json。stdout/stderr：logs/system/lskd_20261009_101708.stdout.log 及 .stderr.log。初始进程、GPU 和日志推进正常，错误输出为空。不得重复启动或修改训练逻辑；完成后先核查结果，再讨论多种子实验。
+
+KD EXP_002 已完成并验收：最佳 73.34%，最终 72.64%，Gate 3 通过。原始指标、元数据和 checkpoint 不改写。旧的运行与暂停段落仅作历史溯源。
+
+
 ## KD 完成核查：2026-10-09 10:16（UTC+8）
 
 EXP_002 已于 10:09:45 完成 240/240 epochs。最佳 Top-1 73.34%（epoch 183），最终 72.64%；相对 Baseline 分别 +0.81、+0.41 个百分点。完整指标、续训连续性、源码与入口哈希、best/latest checkpoint 均检查通过，错误日志为空，Gate 3 通过。

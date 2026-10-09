@@ -1,0 +1,23 @@
+experiment_id: EXP_008
+method: lskd
+dataset: CIFAR100
+teacher: resnet32x4
+student: resnet8x4
+seed: 3407
+training:
+  epochs: 240
+  batch_size: 64
+  num_workers: 2
+  learning_rate: 0.05
+  weight_decay: 0.0005
+  momentum: 0.9
+  lr_decay_stages:
+  - 150
+  - 180
+  - 210
+  lr_decay_rate: 0.1
+distillation:
+  temperature: 2.0
+  ce_weight: 0.1
+  kd_weight: 9.0
+  standardized: true
