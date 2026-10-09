@@ -1,0 +1,61 @@
+{
+  "checked_at": "2026-10-09T02:16:14.174951+00:00",
+  "experiment_id": "EXP_002",
+  "status": "completed",
+  "gate3": "passed",
+  "epochs": 240,
+  "best": {
+    "epoch": "183",
+    "train_loss": "11.10157169342041",
+    "train_accuracy": "95.282",
+    "test_loss": "1.1796309757232666",
+    "test_accuracy": "73.34",
+    "learning_rate": "0.0005000000000000001",
+    "train_ce": "0.16707957811832427",
+    "train_kd": "1.2316515268707275",
+    "test_top5_accuracy": "92.65",
+    "epoch_seconds": "54.08368560008239",
+    "peak_gpu_memory_bytes": "376263680"
+  },
+  "final": {
+    "epoch": "240",
+    "train_loss": "9.222972548828125",
+    "train_accuracy": "97.282",
+    "test_loss": "1.2043869707107544",
+    "test_accuracy": "72.64",
+    "learning_rate": "5.0000000000000016e-05",
+    "train_ce": "0.10570494402408599",
+    "train_kd": "1.0236002268981934",
+    "test_top5_accuracy": "92.35",
+    "epoch_seconds": "75.92674299993087",
+    "peak_gpu_memory_bytes": "376263680"
+  },
+  "best_delta_pp": 0.81,
+  "final_delta_pp": 0.41,
+  "prefix_120_unchanged": true,
+  "source_fingerprint": "b8c6fa0e7d8b14068f72b3538fc4712865375efa1fca1bc8eecba956c5ccf3ff",
+  "resume_driver_sha256": "cd23133ae35e3f80fb73cd78cc31854ae05eff09d5ae2330fa219f681554f527",
+  "checkpoints": {
+    "best": {
+      "path": "models\\checkpoints\\kd\\EXP_002\\EXP_002_best.pth",
+      "epoch": 183,
+      "sha256": "6a0b52a3f25c4a68c730ba200a16fe9ad31918eef25aa8b63e12055deaefbe86",
+      "bytes": 9922627
+    },
+    "latest": {
+      "path": "models\\checkpoints\\kd\\EXP_002\\EXP_002_latest.pth",
+      "epoch": 240,
+      "sha256": "2a55cc7daaddbd386f3f88e67310639f24865c240a91ed184049ecf66a49af53",
+      "bytes": 9922897
+    }
+  },
+  "raw_sha256": {
+    "experiments/kd/EXP_002_kd_seed42/config.yaml": "96edce0f4553b3defd75b3e1b70de2cfe4bc465388fd4cd699d61d60c592a790",
+    "experiments/kd/EXP_002_kd_seed42/metadata.json": "3d9ec37a1766de4df81f60858c09502583c8f12c3723467edf43d697f6129a27",
+    "experiments/kd/EXP_002_kd_seed42/metrics.csv": "9432eccd120cc2e884235e41033b635fd1ed8cfaa57e6aac46d9f9e30c38eb37",
+    "experiments/kd/EXP_002_kd_seed42/train.log": "1c1b494210ab1dc632f72ae868e6e46c167ccdf3554bfc8db5a96731d059a7a2",
+    "experiments/kd/EXP_002_kd_seed42/error.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "validation_scope": "240-row numeric/log audit; strict CPU checkpoint loading; no fresh full-test inference",
+  "lskd_gate_preflight": "passed"
+}

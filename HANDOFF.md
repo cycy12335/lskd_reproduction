@@ -1,5 +1,15 @@
 # 项目交接文件
 
+## KD 完成核查：2026-10-09 10:16（UTC+8）
+
+EXP_002 已于 10:09:45 完成 240/240 epochs。最佳 Top-1 73.34%（epoch 183），最终 72.64%；相对 Baseline 分别 +0.81、+0.41 个百分点。完整指标、续训连续性、源码与入口哈希、best/latest checkpoint 均检查通过，错误日志为空，Gate 3 通过。
+
+报告：reports/analysis/02_kd_analysis.md；机器核查：reports/validation/EXP_002_completion_audit_20261009.json。原记录未改写。checkpoint 保留本地。
+
+按既有授权推进 EXP_003 LS-KD（仅标准化开关改变），启动状态以实时 registry、metadata、锁和进程为准。下文关于 KD 运行中的记录均为历史状态。
+
+
+
 ## 最新指令：继续训练（2026-10-09）
 
 用户授权优先续训，无法恢复才从头重训并覆盖。检查确认 EXP_002 的 epoch 120 checkpoint 具备恢复条件，已新增并测试 operations/resume_kd.py，准备从 epoch 121 继续至 240；无需从头重训。
@@ -12,7 +22,14 @@
 
 
 
-## 最新指令：暂停训练（2026-10-08 22:32，UTC+8）
+### 续训已启动：2026-10-09 08:06（UTC+8）
+
+EXP_002 已于 08:06:04 启动续训，训练 PID 38520、启动包装 PID 33992。恢复自 epoch 120，从 epoch 121 继续；运行状态以实时 metadata 为准。新增入口提交 670c65c，SHA256 cd23133ae35e3f80fb73cd78cc31854ae05eff09d5ae2330fa219f681554f527。旧核心源码指纹仍为 b8c6fa0e7d8b14068f72b3538fc4712865375efa1fca1bc8eecba956c5ccf3ff。
+
+归档：reports/progress/EXP_002_resume_20261009_000606；checkpoint 备份：models/checkpoints/kd/EXP_002/before_resume_20261009_000606。已验证前 120 行指标未改变，备份哈希匹配。恢复后 epoch 121 的 step 1、100 损失和准确率与暂停前相应日志显示值一致；此为恢复正确性的额外证据，不等价于完整训练结果保证。
+
+启动 stdout/stderr：logs/system/kd_resume_20261009_080604.stdout.log 及 .stderr.log。锁已建立，GPU 正常执行。不要重复启动或改动运行中的源码。无需从头重训或覆盖原有历史记录。
+## 最新指令：暂停训练（2026-10-08 22:32，UTC+8，历史）
 
 用户明确要求暂停训练。EXP_002 训练进程树已停止，状态 interrupted；已完成 120/240 epochs，阶段最佳 58.4%（epoch 117），最后完成 epoch 的 Top-1 为 53.02%。指标与 checkpoint 已保留并验证可读取。详见 reports/progress/EXP_002_user_stop_20261008_223208/暂停说明.md。
 
