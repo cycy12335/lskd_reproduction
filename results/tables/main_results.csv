@@ -1,0 +1,4 @@
+experiment_id,method,seed,status,epochs,best_epoch,best_top1,final_top1,final_top5
+EXP_001,Baseline,42,completed,240,239,72.53,72.23,92.87
+EXP_002,KD,42,completed,240,183,73.34,72.64,92.35
+EXP_003,LS-KD,42,completed,240,190,76.51,75.96,93.18

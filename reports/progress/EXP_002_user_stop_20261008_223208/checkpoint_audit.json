@@ -1,0 +1,31 @@
+{
+  "checked_at": "2026-10-08T14:33:08.457339+00:00",
+  "checkpoints": {
+    "models/checkpoints/kd/EXP_002/EXP_002_best.pth": {
+      "epoch": 117,
+      "sha256": "4e59ef0fa776fcfd827f471ea2c4dfb5723ddf2f0d704e50630e7ea3e176e6ea",
+      "bytes": 9922435
+    },
+    "models/checkpoints/kd/EXP_002/EXP_002_latest.pth": {
+      "epoch": 120,
+      "sha256": "da6c25c11d1a53a31c7567c885aad3a3d22feaadf9dce3c17c3e20bb7d041287",
+      "bytes": 9922705
+    }
+  },
+  "last_completed_epoch": 120,
+  "last_metrics": {
+    "train_loss": 36.316892644042966,
+    "train_accuracy": 66.25,
+    "train_ce": 1.274002727584839,
+    "train_kd": 4.021054709167481,
+    "train_samples": 50000,
+    "test_loss": 2.341344284820557,
+    "test_accuracy": 53.02,
+    "test_top5_accuracy": 82.78,
+    "test_samples": 10000,
+    "epoch": 120,
+    "learning_rate": 0.05,
+    "epoch_seconds": 55.358803300070576,
+    "peak_gpu_memory_bytes": 374166528
+  }
+}

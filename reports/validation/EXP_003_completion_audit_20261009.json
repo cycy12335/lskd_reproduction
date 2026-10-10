@@ -1,0 +1,56 @@
+{
+  "checked_at": "2026-10-09T07:35:01.222177+00:00",
+  "experiment_id": "EXP_003",
+  "status": "completed",
+  "gate4_integrity": "passed",
+  "epochs": 240,
+  "best": {
+    "epoch": "190",
+    "train_loss": "1.4309942419052124",
+    "train_accuracy": "96.312",
+    "test_loss": "3.910056307601929",
+    "test_accuracy": "76.51",
+    "learning_rate": "0.0005000000000000001",
+    "train_ce": "3.954332808227539",
+    "train_kd": "0.11506232826232911",
+    "test_top5_accuracy": "93.41",
+    "epoch_seconds": "78.37111849989742",
+    "peak_gpu_memory_bytes": "374166528"
+  },
+  "final": {
+    "epoch": "240",
+    "train_loss": "1.3065672295379638",
+    "train_accuracy": "97.71",
+    "test_loss": "4.044862754058838",
+    "test_accuracy": "75.96",
+    "learning_rate": "5.0000000000000016e-05",
+    "train_ce": "4.07350448638916",
+    "train_kd": "0.09991297449588776",
+    "test_top5_accuracy": "93.18",
+    "epoch_seconds": "77.9014535000315",
+    "peak_gpu_memory_bytes": "374166528"
+  },
+  "checkpoints": {
+    "best": {
+      "path": "models/checkpoints/lskd/EXP_003/EXP_003_best.pth",
+      "epoch": 190,
+      "sha256": "724aaafc5a8d279f992c00d3a3d457bbd859f834f34e6d742efcd6ea030ecd1d",
+      "bytes": 9922435
+    },
+    "latest": {
+      "path": "models/checkpoints/lskd/EXP_003/EXP_003_latest.pth",
+      "epoch": 240,
+      "sha256": "51b54ca2763c4ca0b4d357e79a31d79311429a89317229d020a306afe2a365d0",
+      "bytes": 9922705
+    }
+  },
+  "matched_kd_config": true,
+  "source_fingerprint": "b8c6fa0e7d8b14068f72b3538fc4712865375efa1fca1bc8eecba956c5ccf3ff",
+  "raw_sha256": {
+    "experiments/lskd/EXP_003_lskd_seed42/config.yaml": "190af6e4c13e4543e83541e042533a794ed09ed7b4776a0b32a06c0aad3a18cc",
+    "experiments/lskd/EXP_003_lskd_seed42/metadata.json": "cdf6bdae5d77c740eeaf5f8c40e4c4e6e2033e6a7c478706f8a732bac4a6b1f9",
+    "experiments/lskd/EXP_003_lskd_seed42/metrics.csv": "58a684dc0342b1cb609c13959c56d723bc3cffa10d923ac47e3e679db3b89335",
+    "experiments/lskd/EXP_003_lskd_seed42/train.log": "d3d1b698be4166f85c6733d069568f0a13ca95d939b4aa7c712ea3a47b05d9ae",
+    "experiments/lskd/EXP_003_lskd_seed42/error.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

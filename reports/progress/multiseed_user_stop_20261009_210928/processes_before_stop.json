@@ -1,0 +1,38 @@
+﻿[
+    {
+        "ProcessId":  52752,
+        "ParentProcessId":  56896,
+        "CreationDate":  "\/Date(1791533466228)\/",
+        "CommandLine":  "\"D:\\reproduction\\.venv\\Scripts\\python.exe\" -u operations/multiseed_queue.py "
+    },
+    {
+        "ProcessId":  3572,
+        "ParentProcessId":  52752,
+        "CreationDate":  "\/Date(1791533466271)\/",
+        "CommandLine":  "\"D:\\reproduction\\.tools\\python\\cpython-3.10.20-windows-x86_64-none\\python.exe\" -u operations/multiseed_queue.py "
+    },
+    {
+        "ProcessId":  44692,
+        "ParentProcessId":  3572,
+        "CreationDate":  "\/Date(1791543783024)\/",
+        "CommandLine":  "D:\\reproduction\\.venv\\Scripts\\python.exe -u scripts/train_kd.py --config configs/multiseed/EXP_006_kd_seed3407.yaml"
+    },
+    {
+        "ProcessId":  49560,
+        "ParentProcessId":  44692,
+        "CreationDate":  "\/Date(1791543783125)\/",
+        "CommandLine":  "\"D:\\reproduction\\.tools\\python\\cpython-3.10.20-windows-x86_64-none\\python.exe\" -u scripts/train_kd.py --config configs/multiseed/EXP_006_kd_seed3407.yaml"
+    },
+    {
+        "ProcessId":  50900,
+        "ParentProcessId":  49560,
+        "CreationDate":  "\/Date(1791551330929)\/",
+        "CommandLine":  "\"D:\\reproduction\\.venv\\Scripts\\python.exe\" \"-c\" \"from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=49560, pipe_handle=1736)\" \"--multiprocessing-fork\""
+    },
+    {
+        "ProcessId":  51004,
+        "ParentProcessId":  49560,
+        "CreationDate":  "\/Date(1791551340273)\/",
+        "CommandLine":  "\"D:\\reproduction\\.venv\\Scripts\\python.exe\" \"-c\" \"from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=49560, pipe_handle=824)\" \"--multiprocessing-fork\""
+    }
+]

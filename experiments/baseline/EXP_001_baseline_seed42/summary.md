@@ -1,14 +1,13 @@
-# EXP_001 Student Baseline ? running
+# EXP_001：Baseline 实验总结
 
-Snapshot time (UTC): 2026-10-08T07:11:34.754854+00:00
-Status: running
-Purpose: establish the ResNet8x4 student baseline before KD and LS-KD.
-Configuration: seed 42, full CIFAR-100, FP32, 240 epochs, batch 64, SGD LR 0.05.
-Code commit: 7eb60bb7872a7f2085caa2e61fad1b035b76986c
-Completed epochs at snapshot: 8/240.
-Best test accuracy at snapshot: 45.89% (intermediate result only).
-Teacher verification: EXP_000 passed, Top-1 79.42%, Top-5 94.58%.
+方法：Baseline。状态：completed（已完成），240/240 epochs。
 
-This summary is an initial running snapshot. See metadata.json and metrics.csv for
-live progress; the trainer replaces this summary with the final report at completion.
-Next step: inspect the completed baseline and incident status before advancing to KD.
+最佳测试 Top-1：72.53%（epoch 239）；对应 Top-5：92.92%。
+最终测试 Top-1：72.23%（epoch 240）；对应 Top-5：92.87%。
+
+完整指标、源码指纹、配置哈希、checkpoint 结构与 SHA256 检查通过，Gate 2 通过。未发现训练异常。此为 seed 42 的单次最终结果，不代表全项目复现完成。
+
+完整中文报告：reports/analysis/01_baseline_analysis.md。
+机器核查：reports/validation/EXP_001_completion_audit_20261008.json。
+
+下一步：解决 INC_002 的 KD 论文对照协议溯源，再推进 KD。未启动 KD 或 LS-KD。原始 metadata.json、metrics.csv、train.log、error.log 和 checkpoint 保持不变。

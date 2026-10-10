@@ -1,0 +1,4 @@
+experiment_id,date,method,teacher,student,temperature,alpha,seed,status,best_accuracy,git_commit,notes
+EXP_000,2026-10-08,teacher,resnet32x4,,,,42,completed,79.42,7eb60bb7872a7f2085caa2e61fad1b035b76986c,
+EXP_001,2026-10-08,baseline,,resnet8x4,,,42,completed,72.53,7eb60bb7872a7f2085caa2e61fad1b035b76986c,
+EXP_002,2026-10-08,kd,resnet32x4,resnet8x4,2.0,,42,interrupted,58.4,94d6d072bc81cd26542912cab8abcaccd8c78a29,用户要求暂停，保留现场；无断点续训入口

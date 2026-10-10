@@ -1,0 +1,54 @@
+{
+  "checked_at": "2026-10-09T07:35:57.312987+00:00",
+  "scope": "full CIFAR-100 test, raw logits, no calibration or training",
+  "results": {
+    "baseline_best": {
+      "n": 10000,
+      "top1": 72.53,
+      "top5": 92.92,
+      "ce": 1.0352342365264893,
+      "logit_std": 3.815501735687256,
+      "max_probability": 0.8001108930587768,
+      "target_probability": 0.6693569921493531,
+      "entropy": 0.6456789135932922,
+      "epoch": 239,
+      "checkpoint_sha256": "124d547eb993db2fe8165f177552f34a15baf28ef601966601b9a6f845c9c0f1"
+    },
+    "kd_best": {
+      "n": 10000,
+      "top1": 73.34,
+      "top5": 92.65,
+      "ce": 1.1796309757232666,
+      "logit_std": 3.6988143814086913,
+      "max_probability": 0.8608555473327637,
+      "target_probability": 0.7019241724014282,
+      "entropy": 0.4327996054172516,
+      "epoch": 183,
+      "checkpoint_sha256": "6a0b52a3f25c4a68c730ba200a16fe9ad31918eef25aa8b63e12055deaefbe86"
+    },
+    "lskd_best": {
+      "n": 10000,
+      "top1": 76.51,
+      "top5": 93.41,
+      "ce": 3.910056307601929,
+      "logit_std": 0.11990955671072007,
+      "max_probability": 0.02640899120271206,
+      "target_probability": 0.02594442474246025,
+      "entropy": 4.579622524261475,
+      "epoch": 190,
+      "checkpoint_sha256": "724aaafc5a8d279f992c00d3a3d457bbd859f834f34e6d742efcd6ea030ecd1d"
+    },
+    "lskd_latest": {
+      "n": 10000,
+      "top1": 75.96,
+      "top5": 93.18,
+      "ce": 4.044862754058838,
+      "logit_std": 0.09569965739250183,
+      "max_probability": 0.02150376387834549,
+      "target_probability": 0.021171934375166894,
+      "entropy": 4.590106811523437,
+      "epoch": 240,
+      "checkpoint_sha256": "51b54ca2763c4ca0b4d357e79a31d79311429a89317229d020a306afe2a365d0"
+    }
+  }
+}

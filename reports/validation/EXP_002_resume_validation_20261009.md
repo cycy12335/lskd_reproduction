@@ -30,3 +30,11 @@ da6c25c11d1a53a31c7567c885aad3a3d22feaadf9dce3c17c3e20bb7d041287。
 ## 后续边界
 
 这是用户明确恢复训练后的操作，替代上一条暂停指令。KD 完成后先审查结果，LS-KD 尚未启动。遇到训练异常或结果警告时保存现场并产生中文 Incident，不自动进入下一阶段。
+
+### 续训已启动：2026-10-09 08:06（UTC+8）
+
+EXP_002 已于 08:06:04 启动续训，训练 PID 38520、启动包装 PID 33992。恢复自 epoch 120，从 epoch 121 继续；运行状态以实时 metadata 为准。新增入口提交 670c65c，SHA256 cd23133ae35e3f80fb73cd78cc31854ae05eff09d5ae2330fa219f681554f527。旧核心源码指纹仍为 b8c6fa0e7d8b14068f72b3538fc4712865375efa1fca1bc8eecba956c5ccf3ff。
+
+归档：reports/progress/EXP_002_resume_20261009_000606；checkpoint 备份：models/checkpoints/kd/EXP_002/before_resume_20261009_000606。已验证前 120 行指标未改变，备份哈希匹配。恢复后 epoch 121 的 step 1、100 损失和准确率与暂停前相应日志显示值一致；此为恢复正确性的额外证据，不等价于完整训练结果保证。
+
+启动 stdout/stderr：logs/system/kd_resume_20261009_080604.stdout.log 及 .stderr.log。锁已建立，GPU 正常执行。不要重复启动或改动运行中的源码。无需从头重训或覆盖原有历史记录。

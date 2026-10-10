@@ -1,5 +1,12 @@
 # 项目交接文件
 
+## GitHub 发布快照（2026-10-10）
+
+按用户授权创建私有仓库 https://github.com/cycy12335/lskd_reproduction，并将当前代码、配置、已完成实验指标及中文报告纳入版本管理。远程名 origin，分支 main。checkpoint、数据集、虚拟环境及本地运行工具保留本地。
+
+发布时多种子队列仍在运行 EXP_006，未暂停或改动训练逻辑。仓库中的 registry、metadata、metrics 和队列 state 是发布快照，后续本地实时记录会继续变化；不能把进行中的实验当作已完成结果。发布说明见 reports/progress/github_publication_20261010.md。下文历史“未配置 remote”描述只代表当时状态。
+
+
 ## 最新授权：恢复多种子队列（2026-10-10）
 
 用户要求继续训练。EXP_004 已完成并重新验收；EXP_006 从 epoch 60 检查点恢复，依次继续 EXP_008、EXP_005、EXP_007、EXP_009。下文暂停指令为历史记录，本次授权已解除暂停。启动与进度以实时 state.json、metadata、锁和进程为准。

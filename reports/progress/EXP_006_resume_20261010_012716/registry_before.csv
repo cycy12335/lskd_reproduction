@@ -1,0 +1,7 @@
+experiment_id,date,method,teacher,student,temperature,alpha,seed,status,best_accuracy,git_commit,notes
+EXP_000,2026-10-08,teacher,resnet32x4,,,,42,completed,79.42,7eb60bb7872a7f2085caa2e61fad1b035b76986c,
+EXP_001,2026-10-08,baseline,,resnet8x4,,,42,completed,72.53,7eb60bb7872a7f2085caa2e61fad1b035b76986c,
+EXP_002,2026-10-08,kd,resnet32x4,resnet8x4,2.0,,42,completed,73.34,94d6d072bc81cd26542912cab8abcaccd8c78a29,用户授权从 epoch 120 续训；前段记录已归档，核心源码未变。
+EXP_003,2026-10-09,lskd,resnet32x4,resnet8x4,2.0,,42,completed,76.51,38fcf3f1806142ae203445fb359b846377c6f7c6,
+EXP_004,2026-10-09,baseline,,resnet8x4,,,3407,completed,72.67,a82ce9767a4e04b5608be379938fe7d9d64889b3,
+EXP_006,2026-10-09,kd,resnet32x4,resnet8x4,2.0,,3407,interrupted,57.81,a82ce9767a4e04b5608be379938fe7d9d64889b3,用户要求暂停整个多种子队列；保留指标、日志及 checkpoint。

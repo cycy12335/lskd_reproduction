@@ -1,0 +1,78 @@
+{
+  "status": "paused",
+  "pid": 3572,
+  "started_at": "2026-10-09T08:11:09.041629+00:00",
+  "git_commit": "a82ce9767a4e04b5608be379938fe7d9d64889b3",
+  "controller_sha256": "129f37e006795deb61813a83fea540e29d4e95d5a381ec1304d71ad7ad6e2f42",
+  "plan_sha256": "bbcd0faa24c33cb27c93adc16c0bf19421210b99b0072c7529d6d1fb1e82f74e",
+  "core_fingerprint": "b8c6fa0e7d8b14068f72b3538fc4712865375efa1fca1bc8eecba956c5ccf3ff",
+  "jobs": [
+    {
+      "experiment_id": "EXP_004",
+      "method": "baseline",
+      "seed": 3407,
+      "config": "configs/multiseed/EXP_004_baseline_seed3407.yaml"
+    },
+    {
+      "experiment_id": "EXP_006",
+      "method": "kd",
+      "seed": 3407,
+      "config": "configs/multiseed/EXP_006_kd_seed3407.yaml"
+    },
+    {
+      "experiment_id": "EXP_008",
+      "method": "lskd",
+      "seed": 3407,
+      "config": "configs/multiseed/EXP_008_lskd_seed3407.yaml"
+    },
+    {
+      "experiment_id": "EXP_005",
+      "method": "baseline",
+      "seed": 2024,
+      "config": "configs/multiseed/EXP_005_baseline_seed2024.yaml"
+    },
+    {
+      "experiment_id": "EXP_007",
+      "method": "kd",
+      "seed": 2024,
+      "config": "configs/multiseed/EXP_007_kd_seed2024.yaml"
+    },
+    {
+      "experiment_id": "EXP_009",
+      "method": "lskd",
+      "seed": 2024,
+      "config": "configs/multiseed/EXP_009_lskd_seed2024.yaml"
+    }
+  ],
+  "completed": [
+    {
+      "checked_at": "2026-10-09T11:03:02.794635+00:00",
+      "experiment_id": "EXP_004",
+      "method": "baseline",
+      "seed": 3407,
+      "status": "passed",
+      "best_accuracy": 72.67,
+      "final_accuracy": 72.47,
+      "checkpoints": {
+        "best": {
+          "sha256": "b58e23286330fbfc261b8b75778bc6c31ef8e205288b7624e8b2e9e294ec7653",
+          "epoch": 185,
+          "path": "models/checkpoints/baseline/EXP_004/EXP_004_best.pth"
+        },
+        "latest": {
+          "sha256": "8dc5ddd536907ddd5c50e3398820973883d933a810fe80ff57b1fd746291338d",
+          "epoch": 240,
+          "path": "models/checkpoints/baseline/EXP_004/EXP_004_latest.pth"
+        }
+      }
+    }
+  ],
+  "current": "EXP_006",
+  "current_config_sha256": "b081c68a4a9b640c135595406fc0c00edf151bc7ab64c5299f94c2bafad2acc4",
+  "child_pid": 44692,
+  "stdout": "D:\\reproduction\\logs\\system\\multiseed_EXP_006.stdout.log",
+  "stderr": "D:\\reproduction\\logs\\system\\multiseed_EXP_006.stderr.log",
+  "paused_at": "2026-10-09T13:10:09.596353+00:00",
+  "reason": "user_requested_pause",
+  "process_tree_stopped": true
+}

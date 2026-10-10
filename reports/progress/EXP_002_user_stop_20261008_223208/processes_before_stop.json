@@ -1,0 +1,30 @@
+﻿[
+    {
+        "ProcessId":  39760,
+        "ParentProcessId":  29736,
+        "CreationDate":  "\/Date(1791463173613)\/",
+        "ExecutablePath":  "D:\\reproduction\\.venv\\Scripts\\python.exe",
+        "CommandLine":  "\"D:\\reproduction\\.venv\\Scripts\\python.exe\" -u scripts/train_kd.py "
+    },
+    {
+        "ProcessId":  21832,
+        "ParentProcessId":  39760,
+        "CreationDate":  "\/Date(1791463173679)\/",
+        "ExecutablePath":  "D:\\reproduction\\.tools\\python\\cpython-3.10.20-windows-x86_64-none\\python.exe",
+        "CommandLine":  "\"D:\\reproduction\\.tools\\python\\cpython-3.10.20-windows-x86_64-none\\python.exe\" -u scripts/train_kd.py "
+    },
+    {
+        "ProcessId":  39688,
+        "ParentProcessId":  21832,
+        "CreationDate":  "\/Date(1791469915992)\/",
+        "ExecutablePath":  "D:\\reproduction\\.tools\\python\\cpython-3.10.20-windows-x86_64-none\\python.exe",
+        "CommandLine":  "\"D:\\reproduction\\.venv\\Scripts\\python.exe\" \"-c\" \"from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=21832, pipe_handle=3600)\" \"--multiprocessing-fork\""
+    },
+    {
+        "ProcessId":  43996,
+        "ParentProcessId":  21832,
+        "CreationDate":  "\/Date(1791469918881)\/",
+        "ExecutablePath":  "D:\\reproduction\\.tools\\python\\cpython-3.10.20-windows-x86_64-none\\python.exe",
+        "CommandLine":  "\"D:\\reproduction\\.venv\\Scripts\\python.exe\" \"-c\" \"from multiprocessing.spawn import spawn_main; spawn_main(parent_pid=21832, pipe_handle=2224)\" \"--multiprocessing-fork\""
+    }
+]

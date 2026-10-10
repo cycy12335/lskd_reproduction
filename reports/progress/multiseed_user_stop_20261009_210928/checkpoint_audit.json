@@ -1,0 +1,16 @@
+{
+  "checked_at": "2026-10-09T13:10:09.595346+00:00",
+  "checkpoints": {
+    "EXP_006_best.pth": {
+      "epoch": 50,
+      "sha256": "c84d7a3c24ae1928e95cbdf643140a853b0862a13cf63108cf2a9bb2a84c6f0d",
+      "bytes": 9922435
+    },
+    "EXP_006_latest.pth": {
+      "epoch": 60,
+      "sha256": "1d66426fac21283566d68ed932f55f894425bd9de9ddb0d67053d60e1dbb818b",
+      "bytes": 9922705
+    }
+  },
+  "records_consistent": true
+}

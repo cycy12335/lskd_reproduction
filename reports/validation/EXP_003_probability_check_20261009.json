@@ -1,0 +1,89 @@
+{
+  "samples": 10000,
+  "top1": 76.51,
+  "checkpoint_sha256": "724aaafc5a8d279f992c00d3a3d457bbd859f834f34e6d742efcd6ea030ecd1d",
+  "statistics": {
+    "raw_T1": {
+      "ce": 3.9100562734267914,
+      "same_argmax": 10000,
+      "mean_max_probability": 0.026408991299557528,
+      "max_probability_quantiles": {
+        "0": 0.010413958400986204,
+        "0.5": 0.01768848904165718,
+        "0.9": 0.04428593408865233,
+        "1": 0.8352878411359119
+      },
+      "mean_target_probability": 0.02594442496130618,
+      "geometric_mean_target_probability": 0.020039373345745178
+    },
+    "standardized_T1": {
+      "ce": 1.0314728003780973,
+      "same_argmax": 10000,
+      "mean_max_probability": 0.6339117077294945,
+      "max_probability_quantiles": {
+        "0": 0.051787876004429495,
+        "0.5": 0.7211935445957276,
+        "0.9": 0.901151981915713,
+        "1": 0.9572018039979768
+      },
+      "mean_target_probability": 0.565957141557032,
+      "geometric_mean_target_probability": 0.35648154759182815
+    },
+    "standardized_T2": {
+      "ce": 2.204081752678494,
+      "same_argmax": 10000,
+      "mean_max_probability": 0.15601881243433482,
+      "max_probability_quantiles": {
+        "0": 0.025971544047950743,
+        "0.5": 0.15761246553166114,
+        "0.9": 0.24649243102225213,
+        "1": 0.33359998131104734
+      },
+      "mean_target_probability": 0.143717781905073,
+      "geometric_mean_target_probability": 0.11035180904868741
+    }
+  },
+  "examples": [
+    {
+      "target": 49,
+      "prediction": 12,
+      "correct": false,
+      "max_probability": 0.011596926098855204,
+      "sum_probabilities": 1.0,
+      "logit_std": 0.04544896259903908
+    },
+    {
+      "target": 33,
+      "prediction": 33,
+      "correct": true,
+      "max_probability": 0.014663680744436861,
+      "sum_probabilities": 1.0,
+      "logit_std": 0.06945846974849701
+    },
+    {
+      "target": 72,
+      "prediction": 72,
+      "correct": true,
+      "max_probability": 0.012806504613471043,
+      "sum_probabilities": 0.9999999999999999,
+      "logit_std": 0.05926201865077019
+    },
+    {
+      "target": 51,
+      "prediction": 51,
+      "correct": true,
+      "max_probability": 0.019693600582872152,
+      "sum_probabilities": 1.0,
+      "logit_std": 0.09244339168071747
+    },
+    {
+      "target": 71,
+      "prediction": 71,
+      "correct": true,
+      "max_probability": 0.041161242296853306,
+      "sum_probabilities": 1.0,
+      "logit_std": 0.2224671095609665
+    }
+  ],
+  "definition": "mean over samples of max over 100 classes of softmax(logits); no mean over classes"
+}

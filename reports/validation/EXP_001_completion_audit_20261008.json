@@ -1,0 +1,114 @@
+{
+  "checked_at": "2026-10-08T20:19:52.986287+08:00",
+  "experiment_id": "EXP_001",
+  "status": "completed",
+  "gate2": "passed",
+  "evaluation_scope": "existing metrics and CPU checkpoint structural validation; no new full-test inference",
+  "epochs": 240,
+  "best": {
+    "epoch": "239",
+    "train_loss": "0.23376365236282348",
+    "train_accuracy": "95.332",
+    "test_loss": "1.0352342365264893",
+    "test_accuracy": "72.53",
+    "learning_rate": "5.0000000000000016e-05",
+    "train_ce": "0.23376365236282348",
+    "train_kd": "0.0",
+    "test_top5_accuracy": "92.92",
+    "epoch_seconds": "46.26350559992716",
+    "peak_gpu_memory_bytes": "343444992"
+  },
+  "final": {
+    "epoch": "240",
+    "train_loss": "0.2368817787837982",
+    "train_accuracy": "95.154",
+    "test_loss": "1.0422475337982178",
+    "test_accuracy": "72.23",
+    "learning_rate": "5.0000000000000016e-05",
+    "train_ce": "0.2368817787837982",
+    "train_kd": "0.0",
+    "test_top5_accuracy": "92.87",
+    "epoch_seconds": "47.32663730008062",
+    "peak_gpu_memory_bytes": "343444992"
+  },
+  "stages": [
+    {
+      "epochs": [
+        1,
+        150
+      ],
+      "best_top1": 58.27,
+      "end_top1": 53.98,
+      "end_train_loss": 1.2241188207244873,
+      "end_test_loss": 1.8517956798553468
+    },
+    {
+      "epochs": [
+        151,
+        180
+      ],
+      "best_top1": 71.69,
+      "end_top1": 68.56,
+      "end_train_loss": 0.47729828336715696,
+      "end_test_loss": 1.1928314889907836
+    },
+    {
+      "epochs": [
+        181,
+        210
+      ],
+      "best_top1": 72.48,
+      "end_top1": 72.16,
+      "end_train_loss": 0.25391924070358274,
+      "end_test_loss": 1.0405030630111693
+    },
+    {
+      "epochs": [
+        211,
+        240
+      ],
+      "best_top1": 72.53,
+      "end_top1": 72.23,
+      "end_train_loss": 0.2368817787837982,
+      "end_test_loss": 1.0422475337982178
+    }
+  ],
+  "source_fingerprint": "b8c6fa0e7d8b14068f72b3538fc4712865375efa1fca1bc8eecba956c5ccf3ff",
+  "git_head": "1c3e7ed4252e4ace2d085413654ef928437dca42",
+  "training_git_commit": "7eb60bb7872a7f2085caa2e61fad1b035b76986c",
+  "checks": {
+    "epoch_sequence": true,
+    "log_epoch_sequence": true,
+    "all_metrics_finite": true,
+    "lr_schedule": true,
+    "best_and_final_match_metadata": true,
+    "config_digest": true,
+    "teacher_digest": true,
+    "source_matches_teacher_and_smoke": true,
+    "checkpoint_strict_load_and_finite_tensors": true,
+    "checkpoint_epoch_config_commit": true,
+    "error_logs_empty": true
+  },
+  "raw_sha256": {
+    "experiments/baseline/EXP_001_baseline_seed42/metadata.json": "31280e8e1c471346f516838a27935cb3c7d9e825eabac3a61e61db4d7017ba3e",
+    "experiments/baseline/EXP_001_baseline_seed42/metrics.csv": "c11a157a17dd612f91d7deda704fe317694b02802dff5739a98ae46ec230d5c1",
+    "experiments/baseline/EXP_001_baseline_seed42/config.yaml": "833c927c79503e3eb697a7a24f650ce192b010d61abf2c88b5b5e9f691f36f69",
+    "experiments/baseline/EXP_001_baseline_seed42/train.log": "52c6841ef0265c23d4a82686972f121866d13a0dd077d1c88063ea75ce7a874a",
+    "experiments/baseline/EXP_001_baseline_seed42/error.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "experiments/registry.csv": "a040b25ad972a15e4abd4c89bf7e3981955e4fc8647ab091771779ae328773f4",
+    ".tools/last_launch.json": "075413f389eab754b885fcba439f13ad62c627fea2b65b22d55183f738084a17"
+  },
+  "checkpoints": {
+    "models/checkpoints/baseline/EXP_001/EXP_001_best.pth": {
+      "sha256": "124d547eb993db2fe8165f177552f34a15baf28ef601966601b9a6f845c9c0f1",
+      "bytes": 9922307
+    },
+    "models/checkpoints/baseline/EXP_001/EXP_001_latest.pth": {
+      "sha256": "ae040da5a937d0d5bf4a33cadca95fb1683a9217e1863d9f2cadd2887d943864",
+      "bytes": 9922577
+    }
+  },
+  "lock_exists": false,
+  "git_status_before_document_updates": " M experiments/baseline/EXP_001_baseline_seed42/metadata.json\n M experiments/baseline/EXP_001_baseline_seed42/metrics.csv\n M experiments/baseline/EXP_001_baseline_seed42/summary.md\n M experiments/baseline/EXP_001_baseline_seed42/train.log\n M experiments/registry.csv\n M experiments/teacher/EXP_000_teacher_seed42/summary.md\n M reports/analysis_protocol.md\n M reports/environment/SETUP.md\n M reports/incidents/INC_001_dataset_download.md\n M reports/progress/2026-10-08_launch.md\n M reports/validation/PREFLIGHT.md\n?? \"reports/\\346\\212\\245\\345\\221\\212\\350\\257\\255\\350\\250\\200\\350\\247\\204\\350\\214\\203.md\"\n",
+  "kd_protocol": "pending provenance review; no KD launch"
+}
