@@ -13,6 +13,8 @@ import re
 import statistics
 import subprocess
 import traceback
+import shutil
+import time
 import torch
 import yaml
 from models.architectures import build_model
@@ -165,8 +167,40 @@ def aggregate():
     (DIRECTORY / "汇总.md").write_text("\n".join(lines) + "\n", encoding="utf8")
 
 
-def run():
-    jobs = preflight()
+def preflight_resume():
+    if os.environ.get("GITHUB_ACTIONS") or LOCK.exists() or (ROOT / ".tools/active_experiment.lock").exists():
+        raise RuntimeError("Local idle queue required")
+    previous = read_json(STATE)
+    jobs = read_json(PLAN)
+    if previous["status"] != "paused" or previous["current"] != "EXP_006":
+        raise RuntimeError("Only the user-paused EXP_006 queue is supported")
+    if previous["jobs"] != jobs or previous["plan_sha256"] != sha256(PLAN):
+        raise RuntimeError("Queue plan changed")
+    if previous["core_fingerprint"] != source_fingerprint():
+        raise RuntimeError("Core source changed")
+    if [r["experiment_id"] for r in previous["completed"]] != ["EXP_004"]:
+        raise RuntimeError("Unexpected completed prefix")
+    completed = audit(ROOT / "experiments/baseline/EXP_004_baseline_seed3407")
+    if completed["checkpoints"] != previous["completed"][0]["checkpoints"]:
+        raise RuntimeError("Completed experiment changed")
+    from operations.resume_exp006 import validate
+    validate()
+    with (ROOT / "experiments/registry.csv").open(newline="", encoding="utf8") as stream:
+        used = {r["experiment_id"] for r in csv.DictReader(stream)}
+    for j in jobs[2:]:
+        eid = j["experiment_id"]
+        if eid in used or list((ROOT / "experiments").glob(f"*/{eid}_*")) or (ROOT / "models/checkpoints" / j["method"] / eid).exists():
+            raise RuntimeError("Pending experiment already used: " + eid)
+        base = "configs/baseline/resnet8x4_cifar100.yaml" if j["method"] == "baseline" else f'configs/{j["method"]}/resnet32x4_resnet8x4.yaml'
+        expected = yaml.safe_load((ROOT / base).read_text())
+        expected.update(seed=j["seed"], experiment_id=eid)
+        if yaml.safe_load((ROOT / j["config"]).read_text()) != expected:
+            raise RuntimeError("Pending configuration changed")
+    return jobs[1:]
+
+
+def run(resume=False):
+    jobs = preflight_resume() if resume else preflight()
     check_code_clean()
     with LOCK.open("x", encoding="utf8") as stream:
         json.dump({"pid": os.getpid(), "started_at": now(), "plan": PLAN.relative_to(ROOT).as_posix()}, stream)
@@ -174,6 +208,18 @@ def run():
     state = {"status": "running", "pid": os.getpid(), "started_at": now(), "git_commit": git_commit(),
              "controller_sha256": sha256(__file__), "plan_sha256": sha256(PLAN),
              "core_fingerprint": source_fingerprint(), "jobs": jobs, "completed": []}
+    if resume:
+        prior = read_json(STATE)
+        stamp = time.strftime("%Y%m%d_%H%M%S", time.gmtime())
+        shutil.copy2(STATE, DIRECTORY / ("before_resume_" + stamp + ".json"))
+        if STOP.exists():
+            shutil.copy2(STOP, DIRECTORY / ("stop_request_before_resume_" + stamp + ".json"))
+            STOP.unlink()
+        state["jobs"] = prior["jobs"]
+        state["completed"] = prior["completed"]
+        state["previous_session"] = {k: prior[k] for k in ("pid", "started_at", "controller_sha256", "git_commit")}
+        state["resumed_at"] = now()
+        state["resume_driver_sha256"] = sha256(ROOT / "operations/resume_exp006.py")
     try:
         for j in jobs:
             if STOP.exists():
@@ -184,14 +230,19 @@ def run():
             c = yaml.safe_load((ROOT / j["config"]).read_text())
             ensure_gates(c)
             eid = j["experiment_id"]
-            stdout = ROOT / "logs/system" / f"multiseed_{eid}.stdout.log"
-            stderr = ROOT / "logs/system" / f"multiseed_{eid}.stderr.log"
+            tag = "_resume_" + stamp if resume else ""
+            stdout = ROOT / "logs/system" / f"multiseed_{eid}{tag}.stdout.log"
+            stderr = ROOT / "logs/system" / f"multiseed_{eid}{tag}.stderr.log"
             state.update(current=eid, current_config_sha256=sha256(ROOT / j["config"]))
             write_json(STATE, state)
             env = dict(os.environ, PYTHONUTF8="1")
             with stdout.open("x", encoding="utf8") as out, stderr.open("x", encoding="utf8") as err:
-                child = subprocess.Popen([str(ROOT / ".venv/Scripts/python.exe"), "-u",
-                                          f'scripts/train_{j["method"]}.py', "--config", j["config"]],
+                command = [str(ROOT / ".venv/Scripts/python.exe"), "-u", f'scripts/train_{j["method"]}.py', "--config", j["config"]]
+                if resume and eid == "EXP_006":
+                    if sha256(ROOT / "operations/resume_exp006.py") != state["resume_driver_sha256"]:
+                        raise RuntimeError("Resume driver changed")
+                    command = [str(ROOT / ".venv/Scripts/python.exe"), "-u", "operations/resume_exp006.py"]
+                child = subprocess.Popen(command,
                                          cwd=ROOT, stdout=out, stderr=err, env=env)
                 state.update(child_pid=child.pid, stdout=str(stdout), stderr=str(stderr))
                 write_json(STATE, state)
@@ -229,8 +280,9 @@ def run():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--check", action="store_true")
+    parser.add_argument("--resume", action="store_true")
     args = parser.parse_args()
     if args.check:
-        print(json.dumps({"status": "passed", "jobs": preflight(), "core_fingerprint": source_fingerprint()}))
+        print(json.dumps({"status": "passed", "jobs": preflight_resume() if args.resume else preflight(), "core_fingerprint": source_fingerprint()}))
     else:
-        run()
+        run(resume=args.resume)

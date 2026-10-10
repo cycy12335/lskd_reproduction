@@ -1,5 +1,21 @@
 # 项目交接文件
 
+## 最新授权：恢复多种子队列（2026-10-10）
+
+用户要求继续训练。EXP_004 已完成并重新验收；EXP_006 从 epoch 60 检查点恢复，依次继续 EXP_008、EXP_005、EXP_007、EXP_009。下文暂停指令为历史记录，本次授权已解除暂停。启动与进度以实时 state.json、metadata、锁和进程为准。
+
+新增专用入口 operations/resume_exp006.py；队列使用 operations/multiseed_queue.py --resume。恢复前校验原始配置、核心指纹、Teacher Gate、checkpoint 哈希与指标连续性，归档暂停状态及原始记录；不重跑 EXP_004，不覆盖已完成实验。旧停止请求由控制器归档后移除。任何失败或 warning 停止后续队列。详细验证见 reports/validation/EXP_006_resume_validation_20261010.md。
+
+
+## 最新指令：暂停整个多种子队列（2026-10-09 21:09，UTC+8）
+
+用户要求暂停；控制器及训练子进程树已停止，禁止自动重启或推进。队列 state.json 为 paused，EXP_006 为 interrupted。
+
+EXP_004 已完成（best 72.67%，final 72.47%）。EXP_006 完成 60/240 epochs，阶段 best 57.81%；checkpoint/日志/指标均保留。其余四项未启动。现场与哈希：reports/progress/multiseed_user_stop_20261009_210928/暂停说明.md。
+
+保留 .tools/multiseed_stop_requested.json。后续按用户指示决定恢复方式；当前续训入口仅适用 EXP_002，不能直接用于 EXP_006。下文队列运行状态均为历史记录。
+
+
 ## 最新授权：多种子实验（2026-10-09）
 
 用户要求开始多种子实验。串行顺序：EXP_004 Baseline seed3407 → EXP_006 KD seed3407 → EXP_008 LS-KD seed3407 → EXP_005 Baseline seed2024 → EXP_007 KD seed2024 → EXP_009 LS-KD seed2024。保持原配置，仅改变 seed/ID，不重跑 seed42。

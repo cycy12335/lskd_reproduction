@@ -6,7 +6,7 @@ from datasets.cifar100 import make_loader
 from training.runtime import seed_all
 from training.trainer import train_epoch
 from training.evaluator import evaluate
-from operations.resume_kd import restore_state
+from operations.resume_exp006 import restore_state
 
 
 class SmallImageModel(torch.nn.Module):
@@ -20,6 +20,16 @@ class SmallImageModel(torch.nn.Module):
     def forward(self, x):
         x = self.drop(self.bn(self.conv(x)).mean((2, 3)))
         return self.fc(x), {}
+
+
+@pytest.fixture(autouse=True)
+def stable_cpu_reductions():
+    previous = torch.get_num_threads()
+    torch.set_num_threads(1)
+    try:
+        yield
+    finally:
+        torch.set_num_threads(previous)
 
 
 @pytest.mark.parametrize("device", ["cpu", "cuda"])
